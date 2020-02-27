@@ -81,5 +81,8 @@ for epoch in range(50):
     with torch.no_grad():
         print(generate_seq(net, device="cuda"))
 
+save_path = './model/model.pth'
+torch.save(net.state_dict(), save_path)
+
 
 
