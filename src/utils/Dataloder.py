@@ -115,6 +115,13 @@ class copas_reader():
 import string
 all_chars = string.printable
 vocab_size = len(all_chars)
+
+txt = ""
+with open("./data/tinyshakespeare.txt", "r") as f:
+    txt = f.read()
+
+vocab_dict = 
+
 vocab_dict = dict((c,i) for (i,c) in enumerate(all_chars))
 
 

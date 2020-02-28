@@ -1,0 +1,7 @@
+torch==1.*
+torchtext==0.*
+attrdict==1.*
+numpy==1.*
+tqdm==4.*
+pandas==0.*
+sentencepiece==0.*
