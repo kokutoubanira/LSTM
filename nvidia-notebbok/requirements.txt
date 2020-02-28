@@ -5,3 +5,4 @@ numpy==1.*
 tqdm==4.*
 pandas==0.*
 sentencepiece==0.*
+tensorflow==2.*

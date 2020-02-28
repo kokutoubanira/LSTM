@@ -1,11 +1,13 @@
-FROM notebook
+FROM gpu-note:latest
 
-USER root
+USER root 
 
-ENV ACCEPT_INTEL_PYTHON_EULA=yes
+ADD ./requirements.txt ./
 
-ADD requirements.txt ./
+RUN pip install -U pip && \
+    pip install fastprogress japanize-matplotlib
 
+# mecabとmecab-ipadic-NEologdの導入
 RUN apt-get update \
     && apt-get install -y mecab \
     && apt-get install -y libmecab-dev \
@@ -15,7 +17,8 @@ RUN apt-get update \
     && apt-get install -y curl \
     && apt-get install -y xz-utils \
     && apt-get install -y file \
-    && apt-get install -y sudo 
+    && apt-get install -y sudo
+
 
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
     && cd mecab-ipadic-neologd \
@@ -28,12 +31,8 @@ RUN pip install mecab-python3 && \
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - \
     && sudo apt-get install -y nodejs
 
-# コンテナ側のリッスンポート番号
-EXPOSE 8080
-
-ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
-
 ## JupyterLabの拡張機能
+
 # 変数や行列の中身を確認
 RUN jupyter labextension install @lckr/jupyterlab_variableinspector
 
@@ -42,3 +41,6 @@ RUN pip install autopep8 \
     && pip install jupyterlab_code_formatter \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
     && jupyter serverextension enable --py jupyterlab_code_formatter
+
+EXPOSE 8080
+ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8080", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
