@@ -44,3 +44,4 @@ RUN pip install autopep8 \
 
 EXPOSE 8080
 ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8080", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+

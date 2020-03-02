@@ -1,0 +1,13 @@
+version: '2.3'
+services: 
+  nvidia-jupyter:
+    image: nvidia-jupyter:v1
+    container_name: nvidia-jupyter
+    environment:
+        - NVIDIA_VISIBLE_DEVICES=all     
+    expose: 
+        - "8080"
+    runtime: nvidia
+    ports:
+        - "8080:8080"      
+
