@@ -10,4 +10,8 @@ services:
     runtime: nvidia
     ports:
         - "8080:8080"      
+    volumes: 
+        - ./src:/home/jovyan/work:z
+        - ./model:/home/jovyan/model:z
+        - ./data:/home/jovyan/data:z
 

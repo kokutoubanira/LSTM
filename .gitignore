@@ -1,3 +1,4 @@
 .vscode
 data
 docker-stacks
+__pycache__
