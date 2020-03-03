@@ -6,3 +6,4 @@ tqdm==4.*
 pandas==0.*
 sentencepiece==0.*
 tensorflow==2.*
+statistics==1.* 
